@@ -1,0 +1,60 @@
+{
+    "ionic-plugin-keyboard": {
+        "source": {
+            "type": "registry",
+            "id": "ionic-plugin-keyboard@~2.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-whitelist": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-whitelist@1.3.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@2.2.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-device@1.1.4"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-splashscreen@~4.0.1"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "jpush-phonegap-plugin": {
+        "source": {
+            "type": "registry",
+            "id": "jpush-phonegap-plugin"
+        },
+        "is_top_level": true,
+        "variables": {
+            "APP_KEY": "cb2ac29a8cec5ad25c26999d"
+        }
+    },
+    "cordova-plugin-jcore": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-jcore"
+        },
+        "is_top_level": false,
+        "variables": {}
+    }
+}
