@@ -48,9 +48,28 @@ angular.module('starter.controllers', [])
     //         $state.go(url);
     //     }
     // });
-
+  //推送初始化
+  var setTagsWithAliasCallback=function(event){
+    window.alert('result code:'+event.resultCode+' tags:'+event.tags+' alias:'+event.alias);
+    $scope.getRegistrationID();
+  }
+  var openNotificationInAndroidCallback=function(data){
+    var json=data;
+    window.alert(json);
+    if(typeof data === 'string'){
+      json=JSON.parse(data);
+    }
+    var id=json.extras['cn.jpush.android.EXTRA'].id;
+    //window.alert(id);
+    var alerts = json.extras['cn.jpush.android.ALERT'];
+    $state.go('detail',{id:id+alerts});
+  }
+  var config={
+    stac:setTagsWithAliasCallback,
+    oniac:openNotificationInAndroidCallback
+  };
     $scope.init=function(){
-        jpushService.init();
+        jpushService.init(config);
         window.alert('执行启动');
     };
 
@@ -85,7 +104,16 @@ angular.module('starter.controllers', [])
         setTagsWithAlias(null,alias);
         //jpushService.setAlias(alias);
     }
-
+    $scope.getRegistrationID=function(){
+        jpushService.getRegistrationID().then(function(data){
+            $scope.registrationID=data;
+             console.log("id"+data);
+             alert("succ"+data)
+        },function(err){
+            $scope.registrationID=data;
+            alert("err"+data);
+        });
+    }
     var setTagsWithAlias=function(tags,alias){
         jpushService.setTagsWithAlias(tags,alias);
     }

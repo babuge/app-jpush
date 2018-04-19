@@ -8,8 +8,6 @@
 
 #import <Cordova/CDV.h>
 
-static NSMutableDictionary *_jpushEventCache;
-
 @interface JPushPlugin : CDVPlugin{
 
 }
@@ -19,16 +17,9 @@ static NSMutableDictionary *_jpushEventCache;
 
 //以下为js中可调用接口
 //设置标签、别名
+-(void)setTagsWithAlias:(CDVInvokedUrlCommand*)command;
 -(void)setTags:(CDVInvokedUrlCommand*)command;
--(void)addTags:(CDVInvokedUrlCommand*)command;
--(void)deleteTags:(CDVInvokedUrlCommand*)command;
--(void)cleanTags:(CDVInvokedUrlCommand*)command;
--(void)getAllTags:(CDVInvokedUrlCommand*)command;
--(void)checkTagBindState:(CDVInvokedUrlCommand*)command;
-
 -(void)setAlias:(CDVInvokedUrlCommand*)command;
--(void)deleteAlias:(CDVInvokedUrlCommand*)command;
--(void)getAlias:(CDVInvokedUrlCommand*)command;
 
 //获取 RegistrationID
 -(void)getRegistrationID:(CDVInvokedUrlCommand*)command;
@@ -76,6 +67,7 @@ static NSMutableDictionary *_jpushEventCache;
 /*
  *  以下为js中可监听到的事件
  *  jpush.openNotification      点击推送消息启动或唤醒app
+ *  jpush.setTagsWithAlias      设置标签、别名完成
  *  jpush.receiveMessage        收到自定义消息
  *  jpush.receiveNotification   前台收到推送
  *  jpush.backgroundNotification 后台收到推送
@@ -89,7 +81,7 @@ static NSMutableDictionary *_jpushEventCache;
 
 @end
 
-static JPushPlugin *SharedJPushPlugin;
+JPushPlugin *SharedJPushPlugin;
 
 @interface NSDictionary (JPush)
 -(NSString*)toJsonString;

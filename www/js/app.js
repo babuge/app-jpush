@@ -32,8 +32,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
       var id=json.extras['cn.jpush.android.EXTRA'].id;
       //window.alert(id);
-      var alert = json.extras['cn.jpush.android.ALERT'];
-      $state.go('detail',{id:id+alert});
+      var alerts = json.extras['cn.jpush.android.ALERT'];
+      $state.go('detail',{id:id+alerts});
     }
     var config={
       stac:setTagsWithAliasCallback,
@@ -41,7 +41,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     };
 
     jpushService.init(config);
-
+    jpushService.getUserNotificationSettings(function(num){
+      if(angular.isNumber(num)){
+        if(num>0){
+          alert("已开启通知");
+        }else{
+          alert("未开启通知")
+        }
+      }
+    })
     //启动极光推送服务
     window.plugins.jPushPlugin.init();
     window.plugins.jPushPlugin.setDebugMode(true);

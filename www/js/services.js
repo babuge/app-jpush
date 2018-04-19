@@ -49,21 +49,51 @@ angular.module('starter.services', [])
   };
 })
 
-.factory('jpushService',['$http','$window','$document',function($http,$window,$document){
+.factory('jpushService',['$http','$window','$document','$q',function($http,$window,$document,$q){
   var jpushServiceFactory={};
-
+  
   //var jpushapi=$window.plugins.jPushPlugin;
+    //申请权限 
 
   //启动极光推送
   var _init=function(config){
+      //申请权限 
+      $window.plugins.jPushPlugin.requestPermission();
       $window.plugins.jPushPlugin.init();
       //设置tag和Alias触发事件处理
       document.addEventListener('jpush.setTagsWithAlias',config.stac,false);
+      //收到消息触发
+      document.addEventListener("jpush.receiveNotification", function (event) {
+
+        var alertContent;
+        if(ionic.Platform.isAndroid()) {
+            alertContent = event.alert;
+        } else {
+            alertContent = event.aps.alert;
+        }
+        alert("receiveNotification:" + alertContent);
+    }, false);
+
       //打开推送消息事件处理
       $window.plugins.jPushPlugin.openNotificationInAndroidCallback=config.oniac;
       
-
       $window.plugins.jPushPlugin.setDebugMode(true);
+  }
+  //获取id
+  var _getRegistrationID= function(){
+    var deferred = $q.defer();
+    $window.plugins.jPushPlugin.getRegistrationID(function(data){
+      if(/"failed"/.test(data+"")){
+        deferred.reject(data); 
+      }else{
+        deferred.resolve(data); 
+      }
+    });
+    return deferred.promise;
+  }
+  //重启服务
+  var _resumePush = function(){
+    $window.plugins.jPushPlugin.resumePush();
   }
   //获取状态
   var _isPushStopped=function(fun){
@@ -72,11 +102,6 @@ angular.module('starter.services', [])
   //停止极光推送
   var _stopPush=function(){
       $window.plugins.jPushPlugin.stopPush();
-  }
-
-  //重启极光推送
-  var _resumePush=function(){
-      $window.plugins.jPushPlugin.resumePush();
   }
 
   //设置标签和别名
@@ -94,7 +119,14 @@ angular.module('starter.services', [])
       $window.plugins.jPushPlugin.setAlias(alias);
   }
 
-
+  //系统是否启用通知
+  var _getUserNotificationSettings = function(back){
+    $window.plugins.jPushPlugin.getUserNotificationSettings(function(data){
+      if(!!data && angular.isFunction(back)){
+        back(data);
+      }
+    })
+  }
 
   jpushServiceFactory.init=_init;
   jpushServiceFactory.isPushStopped=_isPushStopped;
@@ -104,7 +136,8 @@ angular.module('starter.services', [])
   jpushServiceFactory.setTagsWithAlias=_setTagsWithAlias;
   jpushServiceFactory.setTags=_setTags;
   jpushServiceFactory.setAlias=_setAlias;
-
+  jpushServiceFactory.getRegistrationID=_getRegistrationID;
+  jpushServiceFactory.getUserNotificationSettings = _getUserNotificationSettings;
   return jpushServiceFactory;
 }])
 

@@ -1,6 +1,6 @@
 {
-  "name": "ionic-app-base",
-  "app_id": "",
+  "name": "八部阁",
+  "app_id": "com.babuge.jpushTest",
   "type": "ionic1",
   "integrations": {
     "gulp": {}

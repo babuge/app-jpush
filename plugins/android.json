@@ -7,19 +7,16 @@
         "files": {}
     },
     "installed_plugins": {
-        "ionic-plugin-keyboard": {
-            "PACKAGE_NAME": "com.babuge.jpushTest"
-        },
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.babuge.jpushTest"
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.babuge.jpushTest"
         },
-        "cordova-plugin-device": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.babuge.jpushTest"
         },
-        "cordova-plugin-splashscreen": {
+        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.babuge.jpushTest"
         },
         "jpush-phonegap-plugin": {
@@ -28,7 +25,7 @@
         }
     },
     "dependent_plugins": {
-        "cordova-plugin-jcore": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.babuge.jpushTest"
         }
     }

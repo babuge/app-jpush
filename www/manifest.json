@@ -1,6 +1,6 @@
 {
-  "name": "My Ionic App",
-  "short_name": "My Ionic App",
+  "name": "com.babuge.jpushTest",
+  "short_name": "八部阁",
   "start_url": "index.html",
   "display": "standalone",
   "icons": [{

@@ -1,10 +1,11 @@
 <ion-view view-title="极光推送Ionic Demo">
-    <ion-content class="padding">
+    <ion-content class="padding" scroll="true">
           <form name="jPushForm">
             <button class="button button-block button-positive" ng-click="init()">启动推送服务</button>
             <button class="button button-block button-energized" ng-click="stopPush()">停止推送服务</button>
             <button class="button button-block button-royal" ng-click="resumePush()">重启推送服务</button>
             <button class="button button-block button-light" ng-click="getPushState()">查看服务状态</button>
+            <button class="button button-block button-calm" ng-click="getRegistrationID()">{{registrationID||"查看服务ID"}}</button>
             <div class="list">
               <div class="item item-input-inset">
                 <label class="item-input-wrapper">

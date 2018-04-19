@@ -1,7 +1,7 @@
 {
-  "name": "ionic-project",
+  "name": "com.babuge.jpushTest",
   "version": "1.1.1",
-  "description": "An Ionic project",
+  "description": "八部阁",
   "devDependencies": {
     "gulp": "^3.5.6",
     "gulp-clean-css": "^3.7.0",

@@ -26,9 +26,9 @@
     "cordova-plugin-device": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-device@1.1.4"
+            "id": "cordova-plugin-device"
         },
-        "is_top_level": true,
+        "is_top_level": false,
         "variables": {}
     },
     "cordova-plugin-splashscreen": {
@@ -41,8 +41,8 @@
     },
     "jpush-phonegap-plugin": {
         "source": {
-            "type": "registry",
-            "id": "jpush-phonegap-plugin"
+            "type": "local",
+            "path": "..\\jpush-phonegap-plugin-3.0.3"
         },
         "is_top_level": true,
         "variables": {
@@ -52,9 +52,9 @@
     "cordova-plugin-jcore": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-jcore"
+            "id": "cordova-plugin-jcore@~1.1.12"
         },
-        "is_top_level": false,
+        "is_top_level": true,
         "variables": {}
     }
 }
